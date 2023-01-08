@@ -23,47 +23,41 @@ function Navbar(props) {
 
     return (
         <div>
-            <nav className="navbar navbar-dark bg-dark navbar-expand-lg bg-body-tertiary">
-                <div className="container-fluid">
-                    <a className="navbar-brand" href="/">
+            <nav class="navbar navbar-expand-lg bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
                         {props.title}
                     </a>
                     <button
-                        className="navbar-toggler"
+                        class="navbar-toggler"
                         type="button"
                         data-bs-toggle="collapse"
-                        data-bs-target="#navbarNav"
-                        aria-controls="navbarNav"
+                        data-bs-target="#navbarNavAltMarkup"
+                        aria-controls="navbarNavAltMarkup"
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                     >
-                        <span className="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <a
-                                    className="nav-link active"
-                                    aria-current="page"
-                                    href="/"
-                                >
-                                    Home
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/">
-                                    Features
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/">
-                                    {props.about}
-                                </a>
-                            </li>
-                            {/* <li className="nav-item">
-                                <a className="nav-link disabled">Disabled</a>
-                            </li> */}
-                        </ul>
+                    <div
+                        class="collapse navbar-collapse"
+                        id="navbarNavAltMarkup"
+                    >
+                        <div class="navbar-nav">
+                            <a
+                                class="nav-link active"
+                                aria-current="page"
+                                href="#"
+                            >
+                                Home
+                            </a>
+                            <a class="nav-link" href="#">
+                                Features
+                            </a>
+                            <a class="nav-link" href="#">
+                                {props.about}
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div className="container-fluid">
@@ -97,25 +91,6 @@ function Navbar(props) {
                         Dark&nbsp;Mode
                     </label>
                 </div>
-
-                {/* <nav className="navbar bg-body-tertiary">
-                    <div className="container-fluid">
-                        <form className="d-flex" role="search">
-                            <input
-                                className="form-control me-2"
-                                type="search"
-                                placeholder="Search"
-                                aria-label="Search"
-                            />
-                            <button
-                                class="btn btn-sm btn-outline-secondary"
-                                type="button"
-                            >
-                                Search
-                            </button>
-                        </form>
-                    </div>
-                </nav> */}
             </nav>
         </div>
     )
