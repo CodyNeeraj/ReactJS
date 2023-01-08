@@ -1,7 +1,26 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react"
+import PropTypes from "prop-types"
 
 function Navbar(props) {
+    const [currentMode, setNewStyle] = useState({
+        color: "black",
+        backgroundColor: "white",
+    })
+
+    const handleModeToggling = () => {
+        if (currentMode.color === "black") {
+            setNewStyle({
+                color: "white",
+                backgroundColor: "black",
+            })
+        } else {
+            setNewStyle({
+                color: "black",
+                backgroundColor: "white",
+            })
+        }
+    }
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -47,6 +66,22 @@ function Navbar(props) {
                         </ul>
                     </div>
                 </div>
+                <div className="form-check form-switch">
+                    <input
+                        className="form-check-input"
+                        type="checkbox"
+                        role="switch"
+                        onClick={handleModeToggling}
+                        id="flexSwitchCheckDefault"
+                    />
+                    <label
+                        className="form-check-label"
+                        forName="flexSwitchCheckDefault"
+                    >
+                        Dark&nbsp;Mode
+                    </label>
+                </div>
+
                 <nav className="navbar bg-body-tertiary">
                     <div className="container-fluid">
                         <form className="d-flex" role="search">
@@ -57,8 +92,8 @@ function Navbar(props) {
                                 aria-label="Search"
                             />
                             <button
-                                className="btn btn-outline-success"
-                                type="submit"
+                                class="btn btn-sm btn-outline-secondary"
+                                type="button"
                             >
                                 Search
                             </button>
@@ -67,17 +102,17 @@ function Navbar(props) {
                 </nav>
             </nav>
         </div>
-    );
+    )
 }
 
 Navbar.propTypes = {
     title: PropTypes.string.isRequired,
     about: PropTypes.string.isRequired,
-};
+}
 
 Navbar.defaultProps = {
     title: "TextUtils",
     about: "About Us",
-};
+}
 
-export default Navbar;
+export default Navbar
