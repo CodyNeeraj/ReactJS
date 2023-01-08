@@ -7,6 +7,7 @@ export default function Textform(props) {
         color: "black",
         backgroundColor: "white",
     })
+    const [currTitle, setTitle] = useState("Dark Mode")
 
     // Initially this hook is kept to empty as the default value  of the placehlder down there
     const handleUpClick = () => {
@@ -30,11 +31,13 @@ export default function Textform(props) {
                 color: "white",
                 backgroundColor: "black",
             })
+            setTitle("Light Mode")
         } else {
             setNewStyle({
                 color: "black",
                 backgroundColor: "white",
             })
+            setTitle("Dark Mode")
         }
     }
 
@@ -73,7 +76,7 @@ export default function Textform(props) {
                 onClick={handleModeToggling}
                 className="btn btn-danger mx-1"
             >
-                Darker
+                {currTitle}
             </button>
             <div style={currentMode} className="container my-3">
                 <h3 style={currentMode}>Analysis Below:</h3>

@@ -66,7 +66,23 @@ function Navbar(props) {
                         </ul>
                     </div>
                 </div>
-                <div className="form-check form-switch">
+                <div className="container-fluid">
+                    <form className="d-flex" role="search">
+                        <input
+                            className="form-control me-2"
+                            type="search"
+                            placeholder="Search"
+                            aria-label="Search"
+                        />
+                        <button
+                            class="btn btn-sm btn-outline-secondary"
+                            type="button"
+                        >
+                            Search
+                        </button>
+                    </form>
+                </div>
+                <div className="form-check form-switch mx-4">
                     <input
                         className="form-check-input"
                         type="checkbox"
@@ -82,7 +98,7 @@ function Navbar(props) {
                     </label>
                 </div>
 
-                <nav className="navbar bg-body-tertiary">
+                {/* <nav className="navbar bg-body-tertiary">
                     <div className="container-fluid">
                         <form className="d-flex" role="search">
                             <input
@@ -99,7 +115,7 @@ function Navbar(props) {
                             </button>
                         </form>
                     </div>
-                </nav>
+                </nav> */}
             </nav>
         </div>
     )
