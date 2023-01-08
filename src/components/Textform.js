@@ -81,14 +81,18 @@ export default function Textform(props) {
             <div style={currentMode} className="container my-3">
                 <h3 style={currentMode}>Analysis Below:</h3>
                 <p style={currentMode}>
-                    {text.split(" ").reduceRight.length} Words and {text.length}{" "}
-                    characters <br />
+                    {text.split(" ").reduceRight.length - 1} Words and{" "}
+                    {text.length} characters <br />
                     {0.008 * text.length} Minutes to read
                 </p>
                 <h3 style={currentMode} className="my-2">
-                    Preview
+                    The text you've typed is:
                 </h3>
-                <p style={currentMode}>{text}</p>
+                <p style={currentMode}>
+                    {text.length > 0
+                        ? text
+                        : "Try typing out something in the field above"}
+                </p>
             </div>
         </div>
     )
