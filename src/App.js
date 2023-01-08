@@ -1,11 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
-import Navbar from './components/Navbar';
+import logo from "./logo.svg";
+import "./App.css";
+import Navbar from "./components/Navbar";
 
 function App() {
-  return (
-    <Navbar title="TextUtils" about="About us"/>
-  );
+    return <Navbar title="TextUtils" about="About us" />;
 }
 
 export default App;
