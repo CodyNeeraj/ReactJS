@@ -23,13 +23,19 @@ function Navbar(props) {
 
     return (
         <div>
-            <nav class="navbar navbar-expand-lg bg-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
+            {/* Required to be both dark classes having same value at same time else it would be result in visible confusion */}
+            {/* above code not valid for style element */}
+            <nav
+                className={`navbar navbar-expand-lg bg-${props.mode} navbar-${
+                    props.mode
+                } text-${props.mode === "dark" ? "white" : "dark"}`}
+            >
+                <div className="container-fluid">
+                    <a className="navbar-brand" href="#">
                         {props.title}
                     </a>
                     <button
-                        class="navbar-toggler"
+                        className="navbar-toggler"
                         type="button"
                         data-bs-toggle="collapse"
                         data-bs-target="#navbarNavAltMarkup"
@@ -37,24 +43,24 @@ function Navbar(props) {
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                     >
-                        <span class="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon"></span>
                     </button>
                     <div
-                        class="collapse navbar-collapse"
+                        className="collapse navbar-collapse"
                         id="navbarNavAltMarkup"
                     >
-                        <div class="navbar-nav">
+                        <div className="navbar-nav">
                             <a
-                                class="nav-link active"
+                                className="nav-link active"
                                 aria-current="page"
                                 href="#"
                             >
                                 Home
                             </a>
-                            <a class="nav-link" href="#">
+                            <a className="nav-link" href="#">
                                 Features
                             </a>
-                            <a class="nav-link" href="#">
+                            <a className="nav-link" href="#">
                                 {props.about}
                             </a>
                         </div>
@@ -69,7 +75,7 @@ function Navbar(props) {
                             aria-label="Search"
                         />
                         <button
-                            class="btn btn-sm btn-outline-secondary"
+                            className="btn btn-sm btn-outline-secondary"
                             type="button"
                         >
                             Search
@@ -81,12 +87,12 @@ function Navbar(props) {
                         className="form-check-input"
                         type="checkbox"
                         role="switch"
-                        onClick={handleModeToggling}
+                        onClick={props.toggleDisplayMode}
                         id="flexSwitchCheckDefault"
                     />
                     <label
                         className="form-check-label"
-                        forName="flexSwitchCheckDefault"
+                        htmlFor="flexSwitchCheckDefault"
                     >
                         Dark&nbsp;Mode
                     </label>
