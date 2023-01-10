@@ -8,17 +8,20 @@ export default function Textform(props) {
     //Text Manipulation logic
     // Initially this hook is kept to empty as the default value  of the placehlder down there
     const handleUpClick = () => {
-        // console.log("clicked" + text)
         setText(text.toUpperCase())
+        // Method available from app.js using props (function linking between diffrent file)
+        props.showAlert("Text Converted to Uppercase", "success")
     }
     const handleLowClick = () => {
         setText(text.toLowerCase())
+        props.showAlert("Text Converted to Lowercase", "success")
     }
     const handleOnChange = (event) => {
         setText(event.target.value)
     }
     const handleClrClick = () => {
         setText("")
+        props.showAlert("Console Cleared", "success")
     }
 
     // Textarea Bg display mode changer (Doesn't useful as it is replaced by other logic - refer navbar.js)
