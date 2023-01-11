@@ -123,7 +123,7 @@ export default function Textform(props) {
 
                 // UnRenderable code ahead (Don't use as it is usng template strings for style editing directly in object)
                 // style={`
-                //     color: ${props.mode == "dark" ? "white" : "black"},
+                //     color: ${props.mode==="dark" ? "white" : "black"},
                 //     backgroundColor:${
                 //         props.mode === "dark" ? "black" : "white"
                 //     }`}
@@ -140,14 +140,14 @@ export default function Textform(props) {
                 </h1>
                 <div
                     style={{
-                        color: props.mode == "dark" ? "white" : "black",
+                        color: props.mode === "dark" ? "white" : "black",
                         backgroundColor:
                             props.mode === "dark" ? "black" : "white",
                     }}
                 >
                     <textarea
                         style={{
-                            color: props.mode == "dark" ? "white" : "black",
+                            color: props.mode === "dark" ? "white" : "black",
                             backgroundColor:
                                 props.mode === "dark" ? "black" : "white",
                         }}
@@ -162,7 +162,7 @@ export default function Textform(props) {
                 </div>
                 <div
                     style={{
-                        color: props.mode == "dark" ? "white" : "black",
+                        color: props.mode === "dark" ? "white" : "black",
                         backgroundColor:
                             props.mode === "dark" ? "black" : "white",
                     }}
@@ -204,14 +204,14 @@ export default function Textform(props) {
             </button>
             <div
                 style={{
-                    color: props.mode == "dark" ? "white" : "black",
+                    color: props.mode === "dark" ? "white" : "black",
                     backgroundColor: props.mode === "dark" ? "black" : "white",
                 }}
                 className="container my-3"
             >
                 <h3
                     style={{
-                        color: props.mode == "dark" ? "white" : "black",
+                        color: props.mode === "dark" ? "white" : "black",
                         backgroundColor:
                             props.mode === "dark" ? "black" : "white",
                     }}
@@ -220,7 +220,7 @@ export default function Textform(props) {
                 </h3>
                 <p
                     style={{
-                        color: props.mode == "dark" ? "white" : "black",
+                        color: props.mode === "dark" ? "white" : "black",
                         backgroundColor:
                             props.mode === "dark" ? "black" : "white",
                     }}
@@ -231,7 +231,7 @@ export default function Textform(props) {
                 </p>
                 <h3
                     style={{
-                        color: props.mode == "dark" ? "white" : "black",
+                        color: props.mode === "dark" ? "white" : "black",
                         backgroundColor:
                             props.mode === "dark" ? "black" : "white",
                     }}
@@ -241,7 +241,7 @@ export default function Textform(props) {
                 </h3>
                 <p
                     style={{
-                        color: props.mode == "dark" ? "white" : "black",
+                        color: props.mode === "dark" ? "white" : "black",
                         backgroundColor:
                             props.mode === "dark" ? "black" : "white",
                     }}

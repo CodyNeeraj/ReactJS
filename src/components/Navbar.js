@@ -31,7 +31,7 @@ function Navbar(props) {
                 } text-${props.mode === "dark" ? "white" : "dark"}`}
             >
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">
+                    <a className="navbar-brand" href="/">
                         {props.title}
                     </a>
                     <button
@@ -53,14 +53,14 @@ function Navbar(props) {
                             <a
                                 className="nav-link active"
                                 aria-current="page"
-                                href="#"
+                                href="/"
                             >
                                 Home
                             </a>
-                            <a className="nav-link" href="#">
+                            <a className="nav-link" href="/">
                                 Features
                             </a>
-                            <a className="nav-link" href="#">
+                            <a className="nav-link" href="/">
                                 {props.about}
                             </a>
                         </div>

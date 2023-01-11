@@ -5,7 +5,7 @@ export default function Footer(props) {
         <div
             className="footer"
             style={{
-                color: props.mode == "dark" ? "white" : "black",
+                color: props.mode === "dark" ? "white" : "black",
                 backgroundColor: props.mode === "dark" ? "black" : "white",
                 textDecoration: "none",
             }}
