@@ -27,10 +27,11 @@ function App() {
     const [alert, setAlert] = useState(null)
 
     // Dispatcher function, to be called from another files when invoking custom alerts
-    const showAlert = (message, type) => {
+    const showAlert = (message, type, typeToDisplay = "Info") => {
         setAlert({
             message: message,
             type: type,
+            typeToDisplay: typeToDisplay,
         })
 
         // timeout for auto-dismissing the alert dialog

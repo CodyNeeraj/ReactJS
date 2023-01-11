@@ -9,15 +9,25 @@ export default function Textform(props) {
     //Text Manipulation logic
     // Initially this hook is kept to empty as the default value  of the placehlder down there
     const handleUpClick = () => {
-        originalString = document.getElementById("my-Box").value
-        setText(text.toUpperCase())
-        // Method available from app.js using props (function linking between diffrent file)
-        props.showAlert("Text Converted to Uppercase", "success")
+        if (text.length !== 0) {
+            originalString = document.getElementById("my-Box").value
+            setText(text.toUpperCase())
+            console.log(originalString)
+            // Method available from app.js using props (function linking between diffrent file)
+            props.showAlert("Text Converted to Uppercase", "success")
+        } else {
+            props.showAlert(
+                "Please Enter Something in Textbox to convert..",
+                "danger",
+                "Error"
+            )
+        }
     }
     const handleLowClick = () => {
         originalString = document.getElementById("my-Box").value
         setText(text.toLowerCase())
-        props.showAlert("Text Converted to Lowercase", "success") 
+        console.log(originalString)
+        props.showAlert("Text Converted to Lowercase", "success")
     }
     const handleOnChange = (event) => {
         setText(event.target.value)
@@ -29,8 +39,12 @@ export default function Textform(props) {
     }
 
     const handleDefaultText = () => {
-        document.getElementById("my-Box").value = originalString
-        console.log(originalString)
+        if (document.querySelector("#my-Box").value !== null) {
+            document.querySelector("#my-Box").value = "sample value populated" //originalString.toString()
+            console.log(originalString.toString())
+        } else {
+            console.log("value is still null my bro")
+        }
     }
     const handleClrClick = () => {
         setText("")
@@ -117,7 +131,7 @@ export default function Textform(props) {
                     We'll never share your data with anyone else.
                 </div>
             </div>
-            <button onClick={handleUpClick} className="btn btn-primary mx-1">
+            <button onClick={handleUpClick} className="btn btn-success mx-1">
                 Capitalise
             </button>
             <button onClick={handleLowClick} className="btn btn-primary mx-1">
@@ -130,7 +144,7 @@ export default function Textform(props) {
                 onClick={handleClrClick}
                 className="btn btn-danger mx-1"
                 id="clearbtn"
-                disabled={`${text.length === 0 ? true : false}`}
+                disabled={text.length === 0 ? true : false}
             >
                 Clear
             </button>
