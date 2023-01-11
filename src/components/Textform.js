@@ -5,22 +5,36 @@ export default function Textform(props) {
 
     const [currTitle, setTitle] = useState("Dark Mode")
 
+    let originalString = ""
     //Text Manipulation logic
     // Initially this hook is kept to empty as the default value  of the placehlder down there
     const handleUpClick = () => {
+        originalString = document.getElementById("my-Box").value
         setText(text.toUpperCase())
         // Method available from app.js using props (function linking between diffrent file)
         props.showAlert("Text Converted to Uppercase", "success")
     }
     const handleLowClick = () => {
+        originalString = document.getElementById("my-Box").value
         setText(text.toLowerCase())
-        props.showAlert("Text Converted to Lowercase", "success")
+        props.showAlert("Text Converted to Lowercase", "success") 
     }
     const handleOnChange = (event) => {
         setText(event.target.value)
+        if (text.length !== 0) {
+            document.getElementById("clearbtn").disabled = false
+        } else {
+            document.getElementById("clearbtn").disabled = true
+        }
+    }
+
+    const handleDefaultText = () => {
+        document.getElementById("my-Box").value = originalString
+        console.log(originalString)
     }
     const handleClrClick = () => {
         setText("")
+        originalString = ""
         props.showAlert("Console Cleared", "success")
     }
 
@@ -109,14 +123,16 @@ export default function Textform(props) {
             <button onClick={handleLowClick} className="btn btn-primary mx-1">
                 SmallCase
             </button>
-            <button onClick={handleClrClick} className="btn btn-danger mx-1">
-                Clear
+            <button onClick={handleDefaultText} className="btn btn-danger mx-1">
+                Reset
             </button>
             <button
-                // onClick={handleModeToggling}
+                onClick={handleClrClick}
                 className="btn btn-danger mx-1"
+                id="clearbtn"
+                disabled={`${text.length === 0 ? true : false}`}
             >
-                {currTitle}
+                Clear
             </button>
             <div
                 style={{
@@ -141,8 +157,8 @@ export default function Textform(props) {
                             props.mode === "dark" ? "black" : "white",
                     }}
                 >
-                    {text.split(" ").length} Words and {text.length} characters{" "}
-                    <br />
+                    {text.trim().split(/\s+/).length} Words and {text.length}{" "}
+                    characters <br />
                     {0.008 * text.length} Minutes to read
                 </p>
                 <h3

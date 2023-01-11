@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar"
 import Textform from "./components/Textform"
 import { useState } from "react"
 import Alert from "./components/Alert"
+import Footer from "./components/Footer"
 
 function App() {
     const [mode, setMode] = useState("light")
@@ -52,6 +53,7 @@ function App() {
                 mode={mode}
                 showAlert={showAlert}
             />
+            <Footer mode={mode} />
         </>
     )
 }
