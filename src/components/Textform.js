@@ -227,7 +227,7 @@ export default function Textform(props) {
                 >
                     {text.trim().split(/\s+/).length} Words and {text.length}{" "}
                     characters <br />
-                    {0.008 * text.length} Minutes to read
+                    {(0.008 * text.length).toFixed(2)} Minutes to read
                 </p>
                 <h3
                     style={{
@@ -244,6 +244,7 @@ export default function Textform(props) {
                         color: props.mode === "dark" ? "white" : "black",
                         backgroundColor:
                             props.mode === "dark" ? "black" : "white",
+                        overflowX: "hidden",
                     }}
                 >
                     {text.length > 0
