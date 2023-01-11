@@ -3,18 +3,34 @@ import React, { useState } from "react"
 export default function Textform(props) {
     const [text, setText] = useState("")
 
-    const [currTitle, setTitle] = useState("Dark Mode")
-
-    let originalString = ""
+    let originalString = null
     //Text Manipulation logic
+    const textConversion = (type, text) => {
+        if (type === "upper") {
+            originalString += document.getElementById("my-Box").value
+            setText(text.toUpperCase())
+            console.log("from custom original variable " + originalString)
+            // Method available from app.js using props (function linking between diffrent file)
+            props.showAlert("Text Converted to Uppercase", "success")
+        } else if (type === "lower") {
+            originalString += document.getElementById("my-Box").value
+            setText(text.toLowerCase())
+            props.showAlert("Text Converted to LowerCase", "success")
+        } else if (type === "rmspace") {
+            setText(text.replace(/\s+/g, " ").trim())
+        } else {
+            props.showAlert(
+                "Some unknown paramter passed in invoker method",
+                "danger",
+                "Failure"
+            )
+        }
+    }
+
     // Initially this hook is kept to empty as the default value  of the placehlder down there
     const handleUpClick = () => {
         if (text.length !== 0) {
-            originalString = document.getElementById("my-Box").value
-            setText(text.toUpperCase())
-            console.log(originalString)
-            // Method available from app.js using props (function linking between diffrent file)
-            props.showAlert("Text Converted to Uppercase", "success")
+            textConversion("upper", text)
         } else {
             props.showAlert(
                 "Please Enter Something in Textbox to convert..",
@@ -24,28 +40,52 @@ export default function Textform(props) {
         }
     }
     const handleLowClick = () => {
-        originalString = document.getElementById("my-Box").value
-        setText(text.toLowerCase())
-        console.log(originalString)
-        props.showAlert("Text Converted to Lowercase", "success")
+        if (text.length !== 0) {
+            textConversion("lower", text)
+        } else {
+            props.showAlert(
+                "Please Enter Something in Textbox to convert..",
+                "danger",
+                "Error"
+            )
+        }
+    }
+    const handleClipboardCopy = () => {
+        if (text.length !== 0) {
+            let copyText = text
+            // copyText.select()
+            // copyText.setSelectionRange(0, 99999) // For mobile devices
+            navigator.clipboard.writeText(copyText)
+            props.showAlert("Text Copied to Clipboard", "success", "done")
+        } else {
+            props.showAlert("Nothing to Copy till now..", "info", "Error")
+        }
+    }
+    const handleDefaultText = () => {
+        // if (document.querySelector("#my-Box").value !== "") {
+        //     document.querySelector("#my-Box").value = originalString.toString()
+        //     console.log(originalString)
+        // } else {
+        //     console.log("value is still null my bro")
+        // }
+        document.getElementById("my-Box").value = originalString
+        console.log("from default method" + originalString)
+    }
+
+    const handleSpaceRemover = () => {
+        textConversion("rmspace", text)
     }
     const handleOnChange = (event) => {
         setText(event.target.value)
         if (text.length !== 0) {
             document.getElementById("clearbtn").disabled = false
+            document.getElementById("clipcpBtn").disabled = false
         } else {
             document.getElementById("clearbtn").disabled = true
+            document.getElementById("clipcpBtn").disabled = false
         }
     }
 
-    const handleDefaultText = () => {
-        if (document.querySelector("#my-Box").value !== null) {
-            document.querySelector("#my-Box").value = "sample value populated" //originalString.toString()
-            console.log(originalString.toString())
-        } else {
-            console.log("value is still null my bro")
-        }
-    }
     const handleClrClick = () => {
         setText("")
         originalString = ""
@@ -136,6 +176,20 @@ export default function Textform(props) {
             </button>
             <button onClick={handleLowClick} className="btn btn-primary mx-1">
                 SmallCase
+            </button>
+            <button
+                onClick={handleSpaceRemover}
+                className="btn btn-primary mx-1"
+            >
+                Remove Spaces
+            </button>
+            <button
+                onClick={handleClipboardCopy}
+                className="btn btn-primary mx-1"
+                id="clipcpBtn"
+                disabled={text.length === 0 ? true : false}
+            >
+                Copy to Clipboard
             </button>
             <button onClick={handleDefaultText} className="btn btn-danger mx-1">
                 Reset
