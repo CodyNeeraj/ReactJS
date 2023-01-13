@@ -225,8 +225,13 @@ export default function Textform(props) {
                             props.mode === "dark" ? "black" : "white",
                     }}
                 >
-                    {text.trim().split(/\s+/).length} Words and {text.length}{" "}
-                    characters <br />
+                    {
+                        text
+                            .trim()
+                            .split(/\s+/)
+                            .filter((word) => word.length !== 0).length
+                    }{" "}
+                    Words and {text.length} characters <br />
                     {(0.008 * text.length).toFixed(2)} Minutes to read
                 </p>
                 <h3
