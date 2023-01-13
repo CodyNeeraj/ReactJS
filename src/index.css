@@ -23,6 +23,6 @@ code {
     font-weight: normal;
 }
 
-.footer > * {
+.footer > p > a {
     text-decoration-line: none;
 }

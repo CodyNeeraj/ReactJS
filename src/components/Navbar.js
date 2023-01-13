@@ -51,7 +51,7 @@ function Navbar(props) {
                     >
                         <div className="navbar-nav">
                             <a
-                                className="nav-link active"
+                                className="nav-link "
                                 aria-current="page"
                                 href="/"
                             >

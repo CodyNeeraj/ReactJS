@@ -53,8 +53,6 @@ export default function Textform(props) {
     const handleClipboardCopy = () => {
         if (text.length !== 0) {
             let copyText = text
-            // copyText.select()
-            // copyText.setSelectionRange(0, 99999) // For mobile devices
             navigator.clipboard.writeText(copyText)
             props.showAlert("Text Copied to Clipboard", "success", "done")
         } else {
@@ -241,7 +239,12 @@ export default function Textform(props) {
                             .filter((word) => word.length !== 0).length // Filtering out empty characters from [" "] to []
                     }{" "}
                     Words and {text.length} characters <br />
-                    {(0.008 * text.length).toFixed(2)} Minutes to read
+                    {(
+                        0.008 *
+                        text.split(/\s+/).filter((word) => word.length !== 0)
+                            .length
+                    ).toFixed(2)}{" "}
+                    Minutes to read
                 </p>
                 <h3
                     style={{
@@ -259,6 +262,7 @@ export default function Textform(props) {
                         backgroundColor:
                             props.mode === "dark" ? "black" : "white",
                         overflowX: "hidden",
+                        overflowY: "auto",
                     }}
                 >
                     {text.length > 0

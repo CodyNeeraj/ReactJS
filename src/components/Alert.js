@@ -7,11 +7,13 @@ export default function Alert(props) {
     }
     return (
         // Boolean execution meant only if not binding the whole component in one element !!
-        props.alert && (
-            <div className={`alert alert-${props.alert.type}`} role="alert">
-                <strong>{makefirstCaps(props.alert.typeToDisplay)}</strong>:{" "}
-                {props.alert.message}
-            </div>
-        )
+        <div style={{height : "50px"}}>
+            {props.alert && (
+                <div className={`alert alert-${props.alert.type}`} role="alert">
+                    <strong>{makefirstCaps(props.alert.typeToDisplay)}</strong>:{" "}
+                    {props.alert.message}
+                </div>
+            )}
+        </div>
     )
 }
