@@ -171,32 +171,41 @@ export default function Textform(props) {
                     We'll never share your data with anyone else.
                 </div>
             </div>
-            <button onClick={handleUpClick} className="btn btn-success mx-1">
+            <button
+                onClick={handleUpClick}
+                className="btn btn-success mx-1 my-1"
+            >
                 Capitalise
             </button>
-            <button onClick={handleLowClick} className="btn btn-primary mx-1">
+            <button
+                onClick={handleLowClick}
+                className="btn btn-primary mx-1 my-1"
+            >
                 SmallCase
             </button>
             <button
                 onClick={handleSpaceRemover}
-                className="btn btn-primary mx-1"
+                className="btn btn-primary mx-1 my-1"
             >
                 Remove Spaces
             </button>
             <button
                 onClick={handleClipboardCopy}
-                className="btn btn-primary mx-1"
+                className="btn btn-primary mx-1 my-1"
                 id="clipcpBtn"
                 disabled={text.length === 0 ? true : false}
             >
                 Copy to Clipboard
             </button>
-            <button onClick={handleDefaultText} className="btn btn-danger mx-1">
+            <button
+                onClick={handleDefaultText}
+                className="btn btn-danger mx-1 my-1"
+            >
                 Reset
             </button>
             <button
                 onClick={handleClrClick}
-                className="btn btn-danger mx-1"
+                className="btn btn-danger mx-1 my-1"
                 id="clearbtn"
                 disabled={text.length === 0 ? true : false}
             >
@@ -207,7 +216,7 @@ export default function Textform(props) {
                     color: props.mode === "dark" ? "white" : "black",
                     backgroundColor: props.mode === "dark" ? "black" : "white",
                 }}
-                className="container my-3"
+                className="container my-3 my-1"
             >
                 <h3
                     style={{
@@ -228,8 +237,8 @@ export default function Textform(props) {
                     {
                         text
                             .trim()
-                            .split(/\s+/)
-                            .filter((word) => word.length !== 0).length
+                            .split(/\s+/) //split by one or more spaces including newline
+                            .filter((word) => word.length !== 0).length // Filtering out empty characters from [" "] to []
                     }{" "}
                     Words and {text.length} characters <br />
                     {(0.008 * text.length).toFixed(2)} Minutes to read

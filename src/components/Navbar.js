@@ -82,7 +82,7 @@ function Navbar(props) {
                         </button>
                     </form>
                 </div>
-                <div className="form-check form-switch mx-4">
+                <div className="form-check form-switch mx-4 my-1">
                     <input
                         className="form-check-input"
                         type="checkbox"
